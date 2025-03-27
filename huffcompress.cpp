@@ -4,7 +4,7 @@
 #include <math.h>
 #include <unordered_map>
 using namespace std;
-
+/*hoffman compression*/
 #define io                        \
     ios_base::sync_with_stdio(0); \
     cin.tie(0);                   \
