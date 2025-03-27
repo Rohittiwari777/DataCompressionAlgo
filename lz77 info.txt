@@ -1,0 +1,53 @@
+LZ77 is a lossless data compression algorithm developed by Abraham Lempel and Jacob Ziv in 1977. It forms the basis for many modern compression algorithms, including ZIP, GZIP, and PNG.
+
+How LZ77 Works
+LZ77 uses a sliding window approach to replace repeating patterns with back-references to previous occurrences.
+
+Sliding Window:
+
+The input data is processed using a fixed-size buffer (window) that moves forward.
+
+The window is split into:
+
+Search buffer (past data)
+
+Lookahead buffer (current data to encode)
+
+Encoding Process:
+
+The algorithm looks for the longest match between the lookahead buffer and the search buffer.
+
+It replaces the match with a triplet (offset, length, next symbol), where:
+
+Offset – Distance to the matching substring in the search buffer.
+
+Length – Number of matching characters.
+
+Next symbol – The first unmatched character after the match.
+
+Decoding Process:
+
+The decoder reconstructs the original data using the offset and length values.
+
+Example
+Original String:
+nginx
+Copy
+Edit
+ABABABABA
+Compressed Representation (Triplets):
+css
+Copy
+Edit
+(0,0,A)   # First symbol (A)
+(0,0,B)   # Next symbol (B)
+(2,2,A)   # "AB" found at offset 2, length 2, next symbol A
+(4,3,A)   # "ABA" found at offset 4, length 3, next symbol A
+Advantages
+✔️ Efficient for repetitive data
+✔️ Fast decoding
+✔️ Basis for many modern compression formats
+
+Disadvantages
+❌ Inefficient for short, random data
+❌ Higher memory usage due to sliding window
